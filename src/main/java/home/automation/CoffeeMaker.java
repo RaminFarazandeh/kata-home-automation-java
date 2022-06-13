@@ -3,7 +3,7 @@ package home.automation;
 /**
  * Created by Ferdinand.Szekeresch on 20.04.2017.
  */
-public class CoffeeMaker {
+public class CoffeeMaker implements Device {
 
 	private boolean on;
 
@@ -37,7 +37,8 @@ public class CoffeeMaker {
 	 * @deprecated starting from the next Update, Coffee Makers of the CoffeeMaster300x Series will no longer support the
 	 *             shutDown method. Please implement halt(int seconds) instead.
 	 */
-	public void shutDown() {
+	@Override
+	public void turnOff() {
 		if (on) {
 			System.out.println("Shutting down CoffeeMaster3000");
 		}

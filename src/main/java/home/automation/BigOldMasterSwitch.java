@@ -17,6 +17,8 @@ public class BigOldMasterSwitch {
 
 	private CoffeeMaker coffeeMaker = new CoffeeMaker();
 
+	private ResultExporter resultExporter;
+	
 	public void press() {
 		if (!isOn) {
 			System.out.println("BIG OLD SWITCH PRESSED.\n\n");
@@ -26,28 +28,22 @@ public class BigOldMasterSwitch {
 			stereo.play("Bob Marley");
 			coffeeMaker.brew(CoffeeMaker.Type.DECAF);
 			isOn = true;
-			StringBuffer b = new StringBuffer();
-			b.append("         |\n");
-			b.append(" \\     _____     /\n");
-			b.append("     /       \\\n");
-			b.append("    (         )\n");
-			b.append("-   ( ))))))) )   -\n");
-			b.append("     \\ \\   / /\n");
-			b.append("      \\|___|/\n");
-			b.append("  /    |___|    \\\n");
-			b.append("       |___| prs\n");
-			b.append("       |___|\n");
-			System.out.println(b.toString());
+
+
+			System.out.println(resultExporter.successful());
+			
 		} else if (isOn) {
 			shutter.open();
 			airConditioning.turnOff();
-			lights.off();
+			lights.turnOff();
 			stereo.rememberPosition();
-			stereo.off();
+			stereo.turnOff();
 			if (coffeeMaker.isOn()) {
 				coffeeMaker.doClean();
-				coffeeMaker.shutDown();
+				coffeeMaker.turnOff();
 			}
 		}
 	}
+
+
 }
